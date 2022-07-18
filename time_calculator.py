@@ -1,7 +1,6 @@
 import re
 
 def add_time(start, duration, day_of_week=None):
-
     start_minutes = convert_time_to_minutes(start)
     duration_minutes = convert_duration_to_minutes(duration)
     new_time_in_minutes = start_minutes + duration_minutes
@@ -68,7 +67,9 @@ def format_days_later(days):
         return f" ({days} days later)"
 
 
-def add_day_of_week(day_of_week, days):
+def add_day_of_week(day_of_week, num_days):
+    """ Returns the day of the week `num_days` after the provided `day_of_week` """
+
     days_of_the_week = [
         "monday",
         "tuesday",
@@ -80,6 +81,6 @@ def add_day_of_week(day_of_week, days):
     ]
 
     current_num = days_of_the_week.index(day_of_week.lower())
-    next_num = (current_num + days) % 7
+    next_num = (current_num + num_days) % 7
 
     return days_of_the_week[next_num].title()
